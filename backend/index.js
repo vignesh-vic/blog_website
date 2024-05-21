@@ -9,12 +9,24 @@ app.use(cookieParser())
 
 const cors = require('cors');
 dotenv.config();
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://blog-website-r9yv.vercel.app'
+];
+
 const corsOptions = {
-    origin: 'http://localhost:3000', // Allow only this origin
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
 };
+
 app.use(cors(corsOptions));
 app.use(express.json())
 
