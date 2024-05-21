@@ -47,7 +47,9 @@ app.use((err, req, res, next) => {
     })
 })
 
-
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+});
 
 app.listen(5000, () => {
     console.log("server running 5000 port");
