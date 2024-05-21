@@ -18,15 +18,15 @@ function Signin() {
     if (!formData.email || !formData.password) {
       return toast.error("Please fill all the fields"); // Display error toast
     }
-    
+
     try {
       dispatch(signinStart())
-      const res = await fetch("http://localhost:5000/api/auth/signin", {
+      const res = await fetch("https://blog-website-bay-psi.vercel.app//api/auth/signin", {
         method: "POST",
         headers: {
-           "Content-Type": "application/json"
+          "Content-Type": "application/json"
           // Authorization: `Bearer ${token}`
-          },
+        },
         body: JSON.stringify(formData),
       });
       const data = await res.json();

@@ -6,38 +6,38 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from '../Firebase'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import { useNavigate,useParams } from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 function UpdatePost() {
     const { postId } = useParams()
     const token = localStorage.getItem("token");
     const navigate = useNavigate()
-    const {currentUser} =useSelector((state)=>state.user)
+    const { currentUser } = useSelector((state) => state.user)
     const [file, setFile] = useState(null)
     const [imageUploadProgress, setImageUploadProgress] = useState(null)
     const [imageUploadError, setImageUploadError] = useState(null)
     const [formData, setFormData] = useState({})
     const [publishError, setPublishError] = useState(null)
 
-    useEffect(()=>{
+    useEffect(() => {
         try {
-            const fetchPost = async()=>{  
-             const res = await fetch(`http://localhost:5000/api/post/getposts?postId=${postId}`)
+            const fetchPost = async () => {
+                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?postId=${postId}`)
                 const data = await res.json()
-                if(!res.ok){
+                if (!res.ok) {
                     setPublishError(data.message)
                     return
                 }
-                if(res.ok){
+                if (res.ok) {
                     setPublishError(null)
                     setFormData(data.posts[0])
                 }
             }
             fetchPost()
         } catch (error) {
-            console.log(error.message);  
+            console.log(error.message);
         }
-    },[])
+    }, [])
 
 
     const handleUploadImage = async () => {
@@ -78,7 +78,7 @@ function UpdatePost() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await fetch(`http://localhost:5000/api/post/updatepost/${formData._id}/${currentUser._id}`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/updatepost/${formData._id}/${currentUser._id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -147,7 +147,7 @@ function UpdatePost() {
                     <ReactQuill theme="snow" placeholder="Write Something..." className="mb-10 h-72" required onChange={(value) => {
                         setFormData({ ...formData, content: value })
                     }}
-                    value={formData.content}
+                        value={formData.content}
                     />
                     <Button type="submit" gradientDuoTone='purpleToPink' className="mb-4">Update Post</Button>
                     {

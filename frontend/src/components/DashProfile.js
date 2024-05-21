@@ -93,7 +93,7 @@ function DashProfile() {
 
         try {
             dispatch(updateStart())
-            const res = await fetch(`http://localhost:5000/api/user/update/${currentUser._id}`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/update/${currentUser._id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -127,7 +127,7 @@ function DashProfile() {
         setShowModel(false)
         try {
             dispatch(deleteUserStart())
-            const res = await fetch(`http://localhost:5000/api/user/delete/${currentUser._id}`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/delete/${currentUser._id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
@@ -147,7 +147,7 @@ function DashProfile() {
 
     const handleSignout = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/user/signout`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/signout`, {
                 method: 'POST',
 
             })

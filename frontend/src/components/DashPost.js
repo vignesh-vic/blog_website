@@ -8,19 +8,19 @@ const token = localStorage.getItem("token");
 function DashPost() {
     const { currentUser } = useSelector((state) => state.user);
     const [userPosts, setUserPosts] = useState([]);
-    const [showMore,setShowMore]=useState(true)
-    const [showModel,setShowModel]=useState(false)
-    const [postIdToDelete, setPostIdToDelete]=useState('')
+    const [showMore, setShowMore] = useState(true)
+    const [showModel, setShowModel] = useState(false)
+    const [postIdToDelete, setPostIdToDelete] = useState('')
     useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/api/post/getposts?userId=${currentUser._id}`
+                    `https://blog-website-bay-psi.vercel.app//api/post/getposts?userId=${currentUser._id}`
                 );
                 const data = await res.json();
                 if (res.ok) {
                     setUserPosts(data.posts);
-                    if(data.posts.length<6){
+                    if (data.posts.length < 6) {
                         setShowMore(false)
                     }
                 }
@@ -33,39 +33,39 @@ function DashPost() {
         }
     }, [currentUser._id]);
 
-    const handleShowMore=async()=>{
-        const startIndex=userPosts.length
+    const handleShowMore = async () => {
+        const startIndex = userPosts.length
         try {
-            const res = await fetch(`http://localhost:5000/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`)
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`)
             const data = await res.json()
-            if (res.ok){
-                setUserPosts((prev)=>[...prev,...data.posts])
-                if(data.posts.length<6){
+            if (res.ok) {
+                setUserPosts((prev) => [...prev, ...data.posts])
+                if (data.posts.length < 6) {
                     setShowMore(false)
                 }
             }
         } catch (error) {
-                console.log(error.message);
+            console.log(error.message);
         }
     }
 
-    const handleDelete=async()=>{
+    const handleDelete = async () => {
         setShowModel(false);
         try {
-            const res = await fetch(`http://localhost:5000/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,{
-                method:'DELETE',
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/deletepost/${postIdToDelete}/${currentUser._id}`, {
+                method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
             })
-            const data=await res.json()
-            if(!res.ok){
+            const data = await res.json()
+            if (!res.ok) {
                 console.log(data.message);
-            }else{
-                setUserPosts((prev)=>
-                prev.filter((post)=>post._id !==postIdToDelete)
-            )
+            } else {
+                setUserPosts((prev) =>
+                    prev.filter((post) => post._id !== postIdToDelete)
+                )
             }
         } catch (error) {
             console.log(error);
@@ -106,8 +106,10 @@ function DashPost() {
                                     </Table.Cell>
                                     <Table.Cell>{post.category}</Table.Cell>
                                     <Table.Cell>
-                                        <span className="font-medium text-red-500 hover:underline cursor-pointer" onClick={() => { setShowModel(true);
-                                            setPostIdToDelete(post._id) }}>Delete</span>
+                                        <span className="font-medium text-red-500 hover:underline cursor-pointer" onClick={() => {
+                                            setShowModel(true);
+                                            setPostIdToDelete(post._id)
+                                        }}>Delete</span>
                                     </Table.Cell>
                                     <Table.Cell>
                                         <Link className="text-teal-500 hover:underline" to={`/update-post/${post._id}`}>
@@ -117,7 +119,7 @@ function DashPost() {
                                 </Table.Row>
                             </Table.Body>
                         ))}
-                  
+
                     </Table>
                     {
                         showMore && (

@@ -13,7 +13,7 @@ function Comments({ comment, handleLike, commentEdit, handleDelete, token }) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/user/getby/${comment.userId}`)
+                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/getby/${comment.userId}`)
                 if (res.ok) {
                     const data = await res.json()
                     setUser(data)
@@ -28,10 +28,10 @@ function Comments({ comment, handleLike, commentEdit, handleDelete, token }) {
         setEditiing(true)
         setEditedContent(comment.content)
     }
- 
+
     const handleSave = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/comment/editComment/${comment._id}`,
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/comment/editComment/${comment._id}`,
                 {
                     method: 'PUT',
                     headers: {
@@ -127,7 +127,7 @@ function Comments({ comment, handleLike, commentEdit, handleDelete, token }) {
                                 {
                                     currentUser && (currentUser._id === comment.userId || currentUser.isAdmin) && (
                                         <button
-                                                onClick={() => handleDelete(comment._id)}
+                                            onClick={() => handleDelete(comment._id)}
                                             type='button'
                                             className="text-gray-400 hover:text-red-500"
                                         >

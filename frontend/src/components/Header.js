@@ -1,6 +1,6 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation ,useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,7 +25,7 @@ function Header() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/user/signout`, {
+      const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/signout`, {
         method: 'POST',
 
       })
@@ -39,11 +39,11 @@ function Header() {
       console.log(error.message);
     }
   }
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const urlParams=new URLSearchParams(location.search)
-    urlParams.set('searchTerm',searchTerm)
-    const searchQuery=urlParams.toString()
+    const urlParams = new URLSearchParams(location.search)
+    urlParams.set('searchTerm', searchTerm)
+    const searchQuery = urlParams.toString()
     navigate(`/search?${searchQuery}`)
 
   }
@@ -65,7 +65,7 @@ function Header() {
           rightIcon={AiOutlineSearch}
           className="hidden lg:inline"
           value={searchTerm}
-          onChange={(e)=>setsearchTerm(e.target.value)}
+          onChange={(e) => setsearchTerm(e.target.value)}
         />
       </form>
       <Button className="w-12 h-9 lg:hidden" color="gray">

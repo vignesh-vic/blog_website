@@ -20,7 +20,7 @@ function DashSideBar() {
     }, [location.search])
     const handleSignout = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/user/signout`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/signout`, {
                 method: 'POST',
 
             })
@@ -43,7 +43,7 @@ function DashSideBar() {
                         {
                             currentUser && currentUser.isAdmin && (
                                 <Link to='/dashboard?tab=dash'>
-                                    <Sidebar.Item active={tab === 'dash' || !tab} icon={HiChartPie}  labelColor='dark' as='div' >
+                                    <Sidebar.Item active={tab === 'dash' || !tab} icon={HiChartPie} labelColor='dark' as='div' >
                                         dashboard
                                     </Sidebar.Item>
                                 </Link>

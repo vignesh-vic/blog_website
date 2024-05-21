@@ -18,7 +18,7 @@ function DashBoardComp() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/post/getusers?limit=5`,
+                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getusers?limit=5`,
                     {
                         method: "GET",
                         headers: {
@@ -40,7 +40,7 @@ function DashBoardComp() {
         }
         const fetchPosts = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/post/getposts?limit=5`,
+                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?limit=5`,
                     {
                         method: "GET",
                         headers: {
@@ -62,7 +62,7 @@ function DashBoardComp() {
         }
         const fetchComments = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/comment/getcomments?limit=5',
+                const res = await fetch('https://blog-website-bay-psi.vercel.app//api/comment/getcomments?limit=5',
                     {
                         method: "GET",
                         headers: {
@@ -144,7 +144,7 @@ function DashBoardComp() {
                             recent Posts
                         </h1>
                         <Button outline gradientDuoTone="purpleToPink">
-                            <Link  to={'/dashboard?tab=users'}>
+                            <Link to={'/dashboard?tab=users'}>
                                 See all
                             </Link>
                         </Button>
@@ -163,27 +163,27 @@ function DashBoardComp() {
 
                         </Table.Head>
                         {
-                            posts && posts.map((post)=>(
+                            posts && posts.map((post) => (
                                 <Table.Body key={post._id} className='divide-y'>
                                     <Table.Row className='bg-white  dark:border-gray-800 dark:bg-gray-800'>
-                                    <Table.Cell>
-                                        <img
-                                        src={post.image}
-                                        alt='user'
-                                        className='w-14 h-10 rounded-md bg-gray-500'                
-                                                        />      
-                                    </Table.Cell>
-                                    <Table.Cell className='w-96'>
-                                        {post.title}
-                                    </Table.Cell>
-                                    <Table.Cell className='w-5'>
-                                        {post.category}
-                                    </Table.Cell>
+                                        <Table.Cell>
+                                            <img
+                                                src={post.image}
+                                                alt='user'
+                                                className='w-14 h-10 rounded-md bg-gray-500'
+                                            />
+                                        </Table.Cell>
+                                        <Table.Cell className='w-96'>
+                                            {post.title}
+                                        </Table.Cell>
+                                        <Table.Cell className='w-5'>
+                                            {post.category}
+                                        </Table.Cell>
                                     </Table.Row>
 
                                 </Table.Body>
                             )
-                        )}
+                            )}
                     </Table>
                 </div>
             </div>

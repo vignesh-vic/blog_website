@@ -1,7 +1,7 @@
 import { Button, Modal, Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FaCheck,FaTimes } from "react-icons/fa";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { HiOutlineExclamationCircle } from 'react-icons/hi'
 const token = localStorage.getItem("token");
 
@@ -9,7 +9,7 @@ function DashUsers() {
     const { currentUser } = useSelector((state) => state.user);
 
     const [users, setUsers] = useState([]);
-    
+
     const [showMore, setShowMore] = useState(true)
     const [showModel, setShowModel] = useState(false)
     const [userIdToDelete, setUserIdToDelete] = useState('')
@@ -17,7 +17,7 @@ function DashUsers() {
         const fetchUsers = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/api/post/getusers`, {
+                    `https://blog-website-bay-psi.vercel.app//api/post/getusers`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function DashUsers() {
 
                 );
                 const data = await res.json();
-                console.log('data',data);
+                console.log('data', data);
                 if (res.ok) {
                     setUsers(data);
                     if (data.users.length < 7) {
@@ -47,14 +47,14 @@ function DashUsers() {
     const handleShowMore = async () => {
         const startIndex = users.length
         try {
-            const res = await fetch(`http://localhost:5000/api/post/getusers?startIndex=${startIndex}`,{
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getusers?startIndex=${startIndex}`, {
                 method: "GET",
                 headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
 
-            },
-                })
+                },
+            })
             const data = await res.json()
             if (res.ok) {
                 setUsers((prev) => [...prev, ...data])
@@ -70,7 +70,7 @@ function DashUsers() {
     // const handleDelete = async () => {
     //     setShowModel(false);
     //     try {
-    //         const res = await fetch(`http://localhost:5000/api/user/deleteuser/${userIdToDelete}/${currentUser._id}`, {
+    //         const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/deleteuser/${userIdToDelete}/${currentUser._id}`, {
     //             method: 'DELETE',
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -91,7 +91,7 @@ function DashUsers() {
     // }
     const handleDeleteUser = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/user/delete/${userIdToDelete}`, {
+            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/delete/${userIdToDelete}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -99,16 +99,16 @@ function DashUsers() {
 
                 },
 
-            })  
-            const data= await res.json()
+            })
+            const data = await res.json()
             if (res.ok) {
-                setUsers((prev) => prev.filter((user)=>user._id !== userIdToDelete))
+                setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete))
                 setShowModel(false)
-            }     
-            else{
+            }
+            else {
                 console.log(data.message);
             }
-         } catch (error) {
+        } catch (error) {
             console.log(error.message);
         }
     }
@@ -143,7 +143,7 @@ function DashUsers() {
                                         {user.userName}
                                     </Table.Cell>
                                     <Table.Cell>{user.email}</Table.Cell>
-                                    <Table.Cell>{user.isAdmin ? <><FaCheck className='text-green-500' /></> : <><FaTimes className='text-red-500'/></>}</Table.Cell>
+                                    <Table.Cell>{user.isAdmin ? <><FaCheck className='text-green-500' /></> : <><FaTimes className='text-red-500' /></>}</Table.Cell>
                                     <Table.Cell>
                                         <span className="font-medium text-red-500 hover:underline cursor-pointer" onClick={() => {
                                             setShowModel(true);
