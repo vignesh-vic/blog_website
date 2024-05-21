@@ -21,7 +21,7 @@ function Signin() {
 
     try {
       dispatch(signinStart())
-      const res = await fetch("https://blog-website-bay-psi.vercel.app//api/auth/signin", {
+      const res = await fetch("http://localhost:5000/api/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

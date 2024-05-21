@@ -25,7 +25,7 @@ function Header() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/user/signout`, {
+      const res = await fetch(`http://localhost:5000/api/user/signout`, {
         method: 'POST',
 
       })

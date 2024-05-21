@@ -22,7 +22,7 @@ function UpdatePost() {
     useEffect(() => {
         try {
             const fetchPost = async () => {
-                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?postId=${postId}`)
+                const res = await fetch(`http://localhost:5000/api/post/getposts?postId=${postId}`)
                 const data = await res.json()
                 if (!res.ok) {
                     setPublishError(data.message)
@@ -78,7 +78,7 @@ function UpdatePost() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/updatepost/${formData._id}/${currentUser._id}`, {
+            const res = await fetch(`http://localhost:5000/api/post/updatepost/${formData._id}/${currentUser._id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",

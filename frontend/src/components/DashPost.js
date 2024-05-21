@@ -15,7 +15,7 @@ function DashPost() {
         const fetchPosts = async () => {
             try {
                 const res = await fetch(
-                    `https://blog-website-bay-psi.vercel.app//api/post/getposts?userId=${currentUser._id}`
+                    `http://localhost:5000/api/post/getposts?userId=${currentUser._id}`
                 );
                 const data = await res.json();
                 if (res.ok) {
@@ -36,7 +36,7 @@ function DashPost() {
     const handleShowMore = async () => {
         const startIndex = userPosts.length
         try {
-            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`)
+            const res = await fetch(`http://localhost:5000/api/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`)
             const data = await res.json()
             if (res.ok) {
                 setUserPosts((prev) => [...prev, ...data.posts])
@@ -52,7 +52,7 @@ function DashPost() {
     const handleDelete = async () => {
         setShowModel(false);
         try {
-            const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/deletepost/${postIdToDelete}/${currentUser._id}`, {
+            const res = await fetch(`http://localhost:5000/api/post/deletepost/${postIdToDelete}/${currentUser._id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",

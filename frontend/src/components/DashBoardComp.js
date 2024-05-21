@@ -18,7 +18,7 @@ function DashBoardComp() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getusers?limit=5`,
+                const res = await fetch(`http://localhost:5000/api/post/getusers?limit=5`,
                     {
                         method: "GET",
                         headers: {
@@ -40,7 +40,7 @@ function DashBoardComp() {
         }
         const fetchPosts = async () => {
             try {
-                const res = await fetch(`https://blog-website-bay-psi.vercel.app//api/post/getposts?limit=5`,
+                const res = await fetch(`http://localhost:5000/api/post/getposts?limit=5`,
                     {
                         method: "GET",
                         headers: {
@@ -62,7 +62,7 @@ function DashBoardComp() {
         }
         const fetchComments = async () => {
             try {
-                const res = await fetch('https://blog-website-bay-psi.vercel.app//api/comment/getcomments?limit=5',
+                const res = await fetch('http://localhost:5000/api/comment/getcomments?limit=5',
                     {
                         method: "GET",
                         headers: {
