@@ -20,7 +20,7 @@ function DashSideBar() {
     }, [location.search])
     const handleSignout = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/user/signout`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/user/signout`, {
                 method: 'POST',
 
             })

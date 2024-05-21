@@ -15,7 +15,7 @@ function DashComment() {
         const fetchComments = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/api/comment/getcomments`, {
+                    `https://blog-website-woad-mu.vercel.app/api/comment/getcomments`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function DashComment() {
     const handleShowMore = async () => {
         const startIndex = comments?.length
         try {
-            const res = await fetch(`http://localhost:5000/api/comment/getcomments?startIndex=${startIndex}`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/getcomments?startIndex=${startIndex}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -69,7 +69,7 @@ function DashComment() {
     const handleDeleteComment = async () => {
         setShowModel(false)
         try {
-            const res = await fetch(`http://localhost:5000/api/comment/deleteComment/${commentIdToDelete}`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/deleteComment/${commentIdToDelete}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

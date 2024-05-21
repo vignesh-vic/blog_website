@@ -18,7 +18,7 @@ function Comment({ postId }) {
     useEffect(() => {
         const getcomments = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/api/comment/getPostComment/${postId}`)
+                const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/getPostComment/${postId}`)
                 if (res.ok) {
                     const data = await res.json()
                     setComments(data)
@@ -38,7 +38,7 @@ function Comment({ postId }) {
             if (comment.length > 200) {
                 return;
             }
-            const res = await fetch(`http://localhost:5000/api/comment/create`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/create`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function Comment({ postId }) {
                 navigate('/sign-in')
                 return;
             }
-            const res = await fetch(`http://localhost:5000/api/comment/likeComment/${commentId}`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/likeComment/${commentId}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -108,7 +108,7 @@ function Comment({ postId }) {
                 navigate('/sign-in')
                 return;
             }
-            const res = await fetch(`http://localhost:5000/api/comment/deleteComment/${id}`, {
+            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/deleteComment/${id}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",
