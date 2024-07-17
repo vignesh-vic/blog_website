@@ -53,9 +53,12 @@ function DashComment() {
             })
             const data = await res.json()
             if (res.ok) {
-                setComments((prev) => [
-                    ...prev, ...comments
-                ])
+
+                setComments((prev) =>
+                    [
+                        prev, ...data?.comments
+                    ]
+                )
                 if (data.comments.length < 7) {
                     setShowMore(false)
                 }
