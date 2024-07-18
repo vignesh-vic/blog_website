@@ -13,7 +13,7 @@ function Comments({ comment, handleLike, commentEdit, handleDelete, token }) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/user/getby/${comment.userId}`)
+                const res = await fetch(`https://blog-website-five-coral.vercel.app/api/user/getby/${comment.userId}`)
                 if (res.ok) {
                     const data = await res.json()
                     setUser(data)
@@ -31,7 +31,7 @@ function Comments({ comment, handleLike, commentEdit, handleDelete, token }) {
 
     const handleSave = async () => {
         try {
-            const res = await fetch(`https://blog-website-woad-mu.vercel.app/api/comment/editComment/${comment._id}`,
+            const res = await fetch(`https://blog-website-five-coral.vercel.app/api/comment/editComment/${comment._id}`,
                 {
                     method: 'PUT',
                     headers: {

@@ -19,7 +19,7 @@ function Oauth() {
         try {
             const resultsFromGoogle = await signInWithPopup(auth, provider)
             // console.log(resultsFromGoogle);
-            const res = await fetch('https://blog-website-woad-mu.vercel.app/api/auth/google', {
+            const res = await fetch('https://blog-website-five-coral.vercel.app/api/auth/google', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

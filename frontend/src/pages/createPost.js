@@ -54,7 +54,7 @@ function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch('https://blog-website-woad-mu.vercel.app/api/post/create', {
+      const res = await fetch('https://blog-website-five-coral.vercel.app/api/post/create', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",

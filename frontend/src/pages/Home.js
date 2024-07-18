@@ -12,7 +12,7 @@ function Home() {
         const fetchPosts = async () => {
             try {
                 const res = await fetch(
-                    `https://blog-website-woad-mu.vercel.app/api/post/getPosts`, {
+                    `https://blog-website-five-coral.vercel.app/api/post/getPosts`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
