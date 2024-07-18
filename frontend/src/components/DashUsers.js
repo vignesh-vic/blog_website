@@ -17,7 +17,7 @@ function DashUsers() {
         const fetchUsers = async () => {
             try {
                 const res = await fetch(
-                    `https://blog-website-five-coral.vercel.app/api/post/getusers`, {
+                    `https://blog-website-backend-cyan.vercel.app/api/post/getusers`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function DashUsers() {
     const handleShowMore = async () => {
         const startIndex = users.length
         try {
-            const res = await fetch(`https://blog-website-five-coral.vercel.app/api/post/getusers?startIndex=${startIndex}`, {
+            const res = await fetch(`https://blog-website-backend-cyan.vercel.app/api/post/getusers?startIndex=${startIndex}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -70,7 +70,7 @@ function DashUsers() {
     // const handleDelete = async () => {
     //     setShowModel(false);
     //     try {
-    //         const res = await fetch(`https://blog-website-five-coral.vercel.app/api/user/deleteuser/${userIdToDelete}/${currentUser._id}`, {
+    //         const res = await fetch(`https://blog-website-backend-cyan.vercel.app/api/user/deleteuser/${userIdToDelete}/${currentUser._id}`, {
     //             method: 'DELETE',
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -91,7 +91,7 @@ function DashUsers() {
     // }
     const handleDeleteUser = async () => {
         try {
-            const res = await fetch(`https://blog-website-five-coral.vercel.app/api/user/delete/${userIdToDelete}`, {
+            const res = await fetch(`https://blog-website-backend-cyan.vercel.app/api/user/delete/${userIdToDelete}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

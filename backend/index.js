@@ -11,7 +11,7 @@ const cors = require('cors');
 dotenv.config();
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://blog-website-five-coral.vercel.app'
+    'https://blog-website-r9yv.vercel.app'
 ];
 
 const corsOptions = {

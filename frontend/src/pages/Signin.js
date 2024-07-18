@@ -21,7 +21,7 @@ function Signin() {
 
     try {
       dispatch(signinStart())
-      const res = await fetch("https://blog-website-five-coral.vercel.app/api/auth/signin", {
+      const res = await fetch("https://blog-website-backend-cyan.vercel.app/api/auth/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
